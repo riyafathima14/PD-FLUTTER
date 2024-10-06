@@ -30,7 +30,7 @@ class _CoursedetailsScreen1State extends State<CoursedetailsScreen1> {
   Widget build(BuildContext context) {
     // Get screen width and height
     double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
+    //double screenHeight = MediaQuery.of(context).size.height;
 
     // Determine if it's mobile or desktop based on screen width
     bool isMobile = screenWidth < 600;
