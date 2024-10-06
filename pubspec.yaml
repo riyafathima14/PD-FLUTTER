@@ -77,7 +77,6 @@ flutter:
    - assets/images/notification icon.png
    - assets/images/account icon.png
    - assets/images/ShareInfo.png
-   - assets/images/Leaderboards.png
    - assets/images/unlock.png
    - assets/images/Vector.png
    - assets/images/tp0.png
@@ -122,6 +121,7 @@ flutter:
    - assets/images/vdoimg.png
    - assets/images/assessment.png
    - assets/images/move_item.png
+   - assets/images/shareinfo_leaderboards.png
 
   
 

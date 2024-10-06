@@ -42,7 +42,7 @@ class _UIUXDesigningAdvancedScreenState
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) => const MyCousesPage()));
+                                  builder: (context) => const MyCoursesPage()));
                         },
                         icon: const Icon(Icons.arrow_back)),
                   ),
@@ -255,7 +255,7 @@ class _UIUXDesigningAdvancedScreenState
             },
             child: Column(
               children: [
-                Widgetlessons.buildLessonsSection(screewidth,context),
+                WidgetLessons.buildLessonsSection(screewidth,context),
               ],
             ),
           )

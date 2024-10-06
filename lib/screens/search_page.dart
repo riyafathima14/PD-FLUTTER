@@ -4,9 +4,15 @@ import 'package:pd/screens/home_page.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    double searchBarWidth = screenWidth * 0.7;
+
     return Scaffold(
+      
       appBar: AppBar(
         leading: GestureDetector(
           onTap: () {
@@ -19,9 +25,7 @@ class SearchPage extends StatelessWidget {
           child: const Icon(Icons.arrow_back),
         ),
         actions: [
-          const SizedBox(
-            width: 60,
-          ),
+          const SizedBox(width: 60),
           OutlinedButton(
             onPressed: () {},
             style: OutlinedButton.styleFrom(
@@ -33,7 +37,8 @@ class SearchPage extends StatelessWidget {
                   width: 2.0,
                   color: Color.fromARGB(255, 255, 255, 255),
                 ),
-                fixedSize: const Size(279, 48)),
+                fixedSize:
+                    Size(searchBarWidth, 48)), // Responsive search bar width
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -56,31 +61,29 @@ class SearchPage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            const SizedBox(
-              height: 140,
-            ),
+            const SizedBox(height: 140),
             SizedBox(
               width: 235,
               height: 176,
               child: Image.asset('assets/images/gif4.gif'),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             Text(
               'Not Found',
               style: GoogleFonts.nunito(
-                  color: const Color(0xFF260446),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700),
+                color: const Color(0xFF260446),
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+              ),
             ),
             Text(
-              'Sorry. the keyword you entered cannot be found. \nplease check again or search with another \nkeyword.',
+              'Sorry. The keyword you entered cannot be found. \nPlease check again or search with another \nkeyword.',
               textAlign: TextAlign.center,
               style: GoogleFonts.nunito(
-                  color: const Color(0xFF8B8B8B),
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700),
+                color: const Color(0xFF8B8B8B),
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ],
         ),

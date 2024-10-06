@@ -5,63 +5,77 @@ import 'package:pd/screens/toplearners_screen.dart';
 
 class LeaderboardsFlashscreen extends StatelessWidget {
   const LeaderboardsFlashscreen({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+    final bool isMobile = screenSize.width < 600;
+
+    double dynamicPadding(double mobilePadding, double desktopPadding) {
+      return isMobile ? mobilePadding : desktopPadding;
+    }
+
+    double dynamicFontSize(double mobileFontSize, double desktopFontSize) {
+      return isMobile ? mobileFontSize : desktopFontSize;
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(
-              height: 200,
-            ),
+            const SizedBox(height: 200), // Top Spacer
             SizedBox(
+              height: dynamicPadding(
+                  100, 200), // Adjust height for images based on device
               child: Image.asset('assets/images/gif2.gif'),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.only(left: 42.0, right: 88),
-              child: Image.asset('assets/images/ShareInfo.png'),
+              padding:
+                  EdgeInsets.symmetric(horizontal: dynamicPadding(42.0, 80)),
+              child: Image.asset('assets/images/shareinfo_leaderboards.png'),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 60.0, right: 45),
-              child: Image.asset('assets/images/Leaderboards.png'),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            Text(
-              'Start Learning and Start Earning from \n Your Leaderboards',
-              style: GoogleFonts.nunito(
-                fontSize: 17,
-                color: const Color(0xFF414ECA),
-                fontWeight: FontWeight.w700,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 8,),
-            Padding(
-              padding: const EdgeInsets.only(left: 110.0),
-              child: Row(children: [
-                Text(
-                'Unlock and Start Today ',
+            
+            const SizedBox(height: 15),
+            Center(
+              child: Text(
+                'Start Learning and Start Earning from \n Your Leaderboards',
                 style: GoogleFonts.nunito(
-                  fontSize: 15,
-                  color: const Color(0xFF8B8B8B),
+                  fontSize: dynamicFontSize(17, 24),
+                  color: const Color(0xFF414ECA),
                   fontWeight: FontWeight.w700,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(width: 5,),
-              Image.asset('assets/images/unlock.png'),
-              ],),
             ),
-            const SizedBox(height: 110,),
+
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Unlock and Start Today ',
+                    style: GoogleFonts.nunito(
+                      fontSize: dynamicFontSize(15, 20),
+                      color: const Color(0xFF8B8B8B),
+                      fontWeight: FontWeight.w700,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+
+                  const SizedBox(width: 5),
+                  Image.asset('assets/images/unlock.png',
+                      width: dynamicPadding(20, 30)), // Adjust size
+                ],
+              ),
+            ),
+
+            const Spacer(),
             SizedBox(
               height: 50,
-              width: 297,
+              width: dynamicPadding(297, 400), // Adjust width for button
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
@@ -70,19 +84,22 @@ class LeaderboardsFlashscreen extends StatelessWidget {
                     ),
                   );
                 },
-                style: const ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(Color(0xFF414ECA)),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF414ECA),
                 ),
                 child: Text(
                   'Explore Leaderboards',
                   style: GoogleFonts.nunito(
-                    fontSize: 15,
+                    fontSize: dynamicFontSize(15, 20),
                     color: const Color(0xFFFFFFFF),
                     fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),

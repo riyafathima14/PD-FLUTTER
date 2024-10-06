@@ -38,7 +38,7 @@ class WidgetCompletedSection {
                   },
                   child: Container(
                     width: screenwidth,
-                    height: 120,
+                    height: 118,
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: const Color.fromARGB(189, 200, 197, 197),

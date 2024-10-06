@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pd/files/alllearners.dart';
+import 'package:pd/files/widgetcoursecontainer.dart';
 import 'package:pd/screens/home_page.dart';
 import '../files/learner.dart';
 
@@ -71,14 +72,19 @@ class _ToplearnersScreenState extends State<ToplearnersScreen> {
           )
         ],
       ),
-      body: SingleChildScrollView(
+      body:LayoutBuilder(
+        builder: (context, constraints) {
+          double width = constraints.maxWidth;
+          bool isDesktop = width > 600; 
+      
+      return SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                height: 45,
+                height: isDesktop?60:50,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: courseNames.length,
@@ -92,33 +98,10 @@ class _ToplearnersScreenState extends State<ToplearnersScreen> {
                             filterLearners(index);
                           });
                         },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: selectedCourseIndex == index
-                                ? const Color(
-                                    0xFF414ECA) 
-                                : Colors.white,
-                            border: Border.all(
-                              color: const Color(0xFF414ECA),
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 15.0, vertical: 10.0),
-                          child: Center(
-                            child: Text(
-                              courseNames[index],
-                              style: GoogleFonts.nunito(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: selectedCourseIndex == index
-                                    ? Colors.white // Blue for selected course
-                                    : const Color(0xFF414ECA),
-                              ),
-                            ),
-                          ),
-                        ),
+                        child: Widgetcoursecontainer.listCourseContainer(
+                                  courseNames[index],
+                                  selectedCourseIndex!,
+                                  index,context),
                       ),
                     );
                   },
@@ -149,7 +132,7 @@ class _ToplearnersScreenState extends State<ToplearnersScreen> {
                             ),
                             const SizedBox(width: 10),
                             CircleAvatar(
-                              radius: 25,
+                              radius: isDesktop?30:25,
                               backgroundImage: AssetImage(learner.imageUrl),
                             ),
                             const SizedBox(width: 10),
@@ -159,7 +142,7 @@ class _ToplearnersScreenState extends State<ToplearnersScreen> {
                                 Text(
                                   learner.name,
                                   style: GoogleFonts.nunito(
-                                    fontSize: 14,
+                                    fontSize:isDesktop?16: 14,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xFF414ECA),
                                   ),
@@ -167,7 +150,7 @@ class _ToplearnersScreenState extends State<ToplearnersScreen> {
                                 Text(
                                   learner.category,
                                   style: GoogleFonts.nunito(
-                                    fontSize: 12,
+                                    fontSize:isDesktop?14: 12,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.grey,
                                   ),
@@ -195,8 +178,8 @@ class _ToplearnersScreenState extends State<ToplearnersScreen> {
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          height: 10,
+                      SizedBox(
+                          height: isDesktop?15:10,
                         )
                       ],
                     );
@@ -206,7 +189,7 @@ class _ToplearnersScreenState extends State<ToplearnersScreen> {
             ],
           ),
         ),
-      ),
+      );},),
     );
   }
 }

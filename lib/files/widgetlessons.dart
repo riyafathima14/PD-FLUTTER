@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pd/screens/course_tour_screen.dart';
 
-class Widgetlessons {
-  static Widget buildLessonsSection(double screewidth,BuildContext context) {
+class WidgetLessons {
+  static Widget buildLessonsSection(double screenWidth, BuildContext context) {
+    // Determine if it's mobile or desktop based on screen width
+    bool isMobile = screenWidth < 600;
+
+    // Responsive padding
+    double horizontalPadding = screenWidth / 17;
+
     return Padding(
-      padding: EdgeInsets.only(left: screewidth / 17, right: screewidth / 17),
+      padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -16,1106 +22,182 @@ class Widgetlessons {
                 "Tools",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.nunito(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xFF414ECA)),
+                  fontSize: isMobile ? 14 : 16,
+                  fontWeight: FontWeight.w700,
+                  color: const Color(0xFF414ECA),
+                ),
               ),
               const Spacer(),
               Text(
                 "See All",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.nunito(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xFF414ECA)),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Row(
-            children: [
-              Text(
-                "Section 1 - Introduction",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.nunito(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xFF8B8B8B)),
-              ),
-              const Spacer(),
-              Text(
-                "180 mins",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.nunito(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xFF414ECA)),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          GestureDetector(
-            onTap:() {
-               Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const CourseTourScreen(),
-                ),
-              );
-            },
-            child: Container(
-              height: 83,
-              width: screewidth,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 2,
-                  color:const  Color.fromARGB(255, 220, 216, 216),
-                ),
-                borderRadius: BorderRadius.circular(19),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(screewidth / 25),
-                child: Row(
-                  children: [
-                    GestureDetector(
-                      child: Container(
-                        height: 35,
-                        width: 35,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 2,
-                            color:const  Color.fromARGB(255, 220, 216, 216),
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        alignment: Alignment.center,
-                        child: Text(
-                          "01",
-                          style: GoogleFonts.nunito(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              color: const Color(0xFF414ECA)),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Deep Dive into UI Research',
-                          style: GoogleFonts.nunito(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                              color: const Color(0xFF000000)),
-                        ),
-                        Text(
-                          "10 min",
-                          style: GoogleFonts.nunito(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              color: const Color(0xFF8B8B8B)),
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    const Icon(
-                      Icons.play_circle_fill_rounded,
-                      color: Color(0xFF414ECA),
-                    )
-                  ],
+                  fontSize: isMobile ? 10 : 12,
+                  fontWeight: FontWeight.w700,
+                  color: const Color(0xFF414ECA),
                 ),
               ),
-            ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Container(
-            height: 83,
-            width: screewidth,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 2,
-                color: const Color.fromARGB(255, 220, 216, 216),
-              ),
-              borderRadius: BorderRadius.circular(19),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(screewidth / 25),
-              child: Row(
-                children: [
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: const Color.fromARGB(255, 220, 216, 216),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "02",
-                      style: GoogleFonts.nunito(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF414ECA)),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'IA for Complex Systems',
-                        style: GoogleFonts.nunito(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF000000)),
-                      ),
-                      Text(
-                        "30 min",
-                        style: GoogleFonts.nunito(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF8B8B8B)),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  const Icon(
-                    Icons.lock,
-                    color: Color(0xFF8b8b8b),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Row(
-            children: [
-              Text(
-                "Section 2 - Tools",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.nunito(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xFF8B8B8B)),
-              ),
-              const Spacer(),
-              Text(
-                "180 mins",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.nunito(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xFF414ECA)),
-              ),
             ],
           ),
-          const SizedBox(
-            height: 8,
-          ),
-          Container(
-            height: 83,
-            width: screewidth,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 2,
-                color: Color.fromARGB(255, 220, 216, 216),
-              ),
-              borderRadius: BorderRadius.circular(19),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(screewidth / 25),
-              child: Row(
-                children: [
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: Color.fromARGB(255, 220, 216, 216),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "03",
-                      style: GoogleFonts.nunito(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF414ECA)),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'UI Design Systems and Scalability',
-                        style: GoogleFonts.nunito(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF000000)),
-                      ),
-                      Text(
-                        "30 min",
-                        style: GoogleFonts.nunito(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF8B8B8B)),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  const Icon(
-                    Icons.lock,
-                    color: const Color(0xFF8b8b8b8b),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Container(
-            height: 83,
-            width: screewidth,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 2,
-                color: Color.fromARGB(255, 220, 216, 216),
-              ),
-              borderRadius: BorderRadius.circular(19),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(screewidth / 25),
-              child: Row(
-                children: [
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: Color.fromARGB(255, 220, 216, 216),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "04",
-                      style: GoogleFonts.nunito(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF414ECA)),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Advanced Prototyping',
-                        style: GoogleFonts.nunito(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF000000)),
-                      ),
-                      Text(
-                        "30 min",
-                        style: GoogleFonts.nunito(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF8B8B8B)),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  const Icon(
-                    Icons.lock,
-                    color: const Color(0xFF8b8b8b8b),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Container(
-            height: 83,
-            width: screewidth,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 2,
-                color: Color.fromARGB(255, 220, 216, 216),
-              ),
-              borderRadius: BorderRadius.circular(19),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(screewidth / 25),
-              child: Row(
-                children: [
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: Color.fromARGB(255, 220, 216, 216),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "05",
-                      style: GoogleFonts.nunito(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF414ECA)),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Persuasion and Influence',
-                        style: GoogleFonts.nunito(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF000000)),
-                      ),
-                      Text(
-                        "30 min",
-                        style: GoogleFonts.nunito(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF8B8B8B)),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  const Icon(
-                    Icons.lock,
-                    color: const Color(0xFF8b8b8b8b),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Container(
-            height: 83,
-            width: screewidth,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 2,
-                color: Color.fromARGB(255, 220, 216, 216),
-              ),
-              borderRadius: BorderRadius.circular(19),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(screewidth / 25),
-              child: Row(
-                children: [
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: Color.fromARGB(255, 220, 216, 216),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "06",
-                      style: GoogleFonts.nunito(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF414ECA)),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Designing for Emerging Tech',
-                        style: GoogleFonts.nunito(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF000000)),
-                      ),
-                      Text(
-                        "30 min",
-                        style: GoogleFonts.nunito(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF8B8B8B)),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  Icon(
-                    Icons.lock,
-                    color: const Color(0xFF8b8b8b8b),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Row(
-            children: [
-              Text(
-                "Section 3 - Let’s Practice",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.nunito(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xFF8B8B8B)),
-              ),
-              const Spacer(),
-              Text(
-                "180 mins",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.nunito(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xFF414ECA)),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Container(
-            height: 83,
-            width: screewidth,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 2,
-                color: Color.fromARGB(255, 220, 216, 216),
-              ),
-              borderRadius: BorderRadius.circular(19),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(screewidth / 25),
-              child: Row(
-                children: [
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: Color.fromARGB(255, 220, 216, 216),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "07",
-                      style: GoogleFonts.nunito(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF414ECA)),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'UI Design Systems and Scalability',
-                        style: GoogleFonts.nunito(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF000000)),
-                      ),
-                      Text(
-                        "30 min",
-                        style: GoogleFonts.nunito(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF8B8B8B)),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                 const  Icon(
-                    Icons.lock,
-                    color: const Color(0xFF8b8b8b8b),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Container(
-            height: 83,
-            width: screewidth,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 2,
-                color: Color.fromARGB(255, 220, 216, 216),
-              ),
-              borderRadius: BorderRadius.circular(19),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(screewidth / 25),
-              child: Row(
-                children: [
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: Color.fromARGB(255, 220, 216, 216),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "08",
-                      style: GoogleFonts.nunito(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF414ECA)),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Design for Business Impact',
-                        style: GoogleFonts.nunito(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF000000)),
-                      ),
-                      Text(
-                        "30 min",
-                        style: GoogleFonts.nunito(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF8B8B8B)),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                 const  Icon(
-                    Icons.lock,
-                    color:  Color(0xFF8b8b8b8b),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Container(
-            height: 83,
-            width: screewidth,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 2,
-                color: Color.fromARGB(255, 220, 216, 216),
-              ),
-              borderRadius: BorderRadius.circular(19),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(screewidth / 25),
-              child: Row(
-                children: [
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: Color.fromARGB(255, 220, 216, 216),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "09",
-                      style: GoogleFonts.nunito(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF414ECA)),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'The Future of UI/UX Design',
-                        style: GoogleFonts.nunito(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF000000)),
-                      ),
-                      Text(
-                        "30 min",
-                        style: GoogleFonts.nunito(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF8B8B8B)),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                 const  Icon(
-                    Icons.lock,
-                    color: const Color(0xFF8b8b8b8b),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Row(
-            children: [
-              Text(
-                "Section 4 - Let’s Practice Advanced",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.nunito(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xFF8B8B8B)),
-              ),
-              const Spacer(),
-              Text(
-                "180 mins",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.nunito(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xFF414ECA)),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Container(
-            height: 83,
-            width: screewidth,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 2,
-                color: Color.fromARGB(255, 220, 216, 216),
-              ),
-              borderRadius: BorderRadius.circular(19),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(screewidth / 25),
-              child: Row(
-                children: [
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: Color.fromARGB(255, 220, 216, 216),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "10",
-                      style: GoogleFonts.nunito(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF414ECA)),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Design for Global Audiences',
-                        style: GoogleFonts.nunito(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF000000)),
-                      ),
-                      Text(
-                        "30 min",
-                        style: GoogleFonts.nunito(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF8B8B8B)),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                 const  Icon(
-                    Icons.lock,
-                    color: const Color(0xFF8b8b8b8b),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Container(
-            height: 83,
-            width: screewidth,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 2,
-                color: Color.fromARGB(255, 220, 216, 216),
-              ),
-              borderRadius: BorderRadius.circular(19),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(screewidth / 25),
-              child: Row(
-                children: [
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: Color.fromARGB(255, 220, 216, 216),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "11",
-                      style: GoogleFonts.nunito(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF414ECA)),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Dark UX and Ethical Design',
-                        style: GoogleFonts.nunito(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF000000)),
-                      ),
-                      Text(
-                        "30 min",
-                        style: GoogleFonts.nunito(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF8B8B8B)),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                 const  Icon(
-                    Icons.lock,
-                    color: const Color(0xFF8b8b8b8b),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Container(
-            height: 83,
-            width: screewidth,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 2,
-                color: Color.fromARGB(255, 220, 216, 216),
-              ),
-              borderRadius: BorderRadius.circular(19),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(screewidth / 25),
-              child: Row(
-                children: [
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: Color.fromARGB(255, 220, 216, 216),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "12",
-                      style: GoogleFonts.nunito(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF414ECA)),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Design for Business Impact',
-                        style: GoogleFonts.nunito(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF000000)),
-                      ),
-                      Text(
-                        "30 min",
-                        style: GoogleFonts.nunito(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF8B8B8B)),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                 const  Icon(
-                    Icons.lock,
-                    color: const Color(0xFF8b8b8b8b),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Row(
-            children: [
-              Text(
-                "Section 4 - Project",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.nunito(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xFF8B8B8B)),
-              ),
-              const Spacer(),
-              Text(
-                "180 mins",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.nunito(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xFF414ECA)),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Container(
-            height: 83,
-            width: screewidth,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 2,
-                color: Color.fromARGB(255, 220, 216, 216),
-              ),
-              borderRadius: BorderRadius.circular(19),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(screewidth / 25),
-              child: Row(
-                children: [
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: Color.fromARGB(255, 220, 216, 216),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "13",
-                      style: GoogleFonts.nunito(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF414ECA)),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Professional Development',
-                        style: GoogleFonts.nunito(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF000000)),
-                      ),
-                      Text(
-                        "30 min",
-                        style: GoogleFonts.nunito(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF8B8B8B)),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                 const  Icon(
-                    Icons.lock,
-                    color: const Color(0xFF8b8b8b8b),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Container(
-            height: 83,
-            width: screewidth,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 2,
-                color: Color.fromARGB(255, 220, 216, 216),
-              ),
-              borderRadius: BorderRadius.circular(19),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(screewidth / 25),
-              child: Row(
-                children: [
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: Color.fromARGB(255, 220, 216, 216),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "14",
-                      style: GoogleFonts.nunito(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF414ECA)),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Portfolio Building',
-                        style: GoogleFonts.nunito(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF000000)),
-                      ),
-                      Text(
-                        "30 min",
-                        style: GoogleFonts.nunito(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF8B8B8B)),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                 const  Icon(
-                    Icons.lock,
-                    color: const Color(0xFF8b8b8b8b),
-                  )
-                ],
-              ),
-            ),
-          ),
+          const SizedBox(height: 8),
+          // Section 1
+          _buildSectionTitle(isMobile, "Section 1 - Introduction", "180 mins"),
+          const SizedBox(height: 10),
+          _buildLessonCard(context, screenWidth, "01", "Deep Dive into UI Research", "10 min"),
+          const SizedBox(height: 8),
+          _buildLessonCard(context, screenWidth, "02", "IA for Complex Systems", "30 min", isLocked: true),
+          const SizedBox(height: 8),
+          // Section 2
+          _buildSectionTitle(isMobile, "Section 2 - Tools", "180 mins"),
+          const SizedBox(height: 8),
+          _buildLessonCard(context, screenWidth, "03", "UI Design Systems and Scalability", "30 min", isLocked: true),
+          const SizedBox(height: 8),
+          _buildLessonCard(context, screenWidth, "04", "Advanced Prototyping", "30 min", isLocked: true),
+          const SizedBox(height: 8),
+          _buildLessonCard(context, screenWidth, "05", "Persuasion and Influence", "30 min", isLocked: true),
+          const SizedBox(height: 8),
+          _buildLessonCard(context, screenWidth, "06", "Designing for Emerging Tech", "30 min", isLocked: true),
+          const SizedBox(height: 8),
+          // Section 3
+          _buildSectionTitle(isMobile, "Section 3 - Let,s-practice", "180 mins"),
+          const SizedBox(height: 8),
+          _buildLessonCard(context, screenWidth, "07", "UI Design Systems and Scalability", "30 min", isLocked: true),
+          const SizedBox(height: 8),
+          _buildLessonCard(context, screenWidth, "08", "Design for Business Impact", "30 min", isLocked: true),
+          const SizedBox(height: 8),
+          _buildLessonCard(context, screenWidth, "09", "The Future of UI/UX Design", "30 min", isLocked: true),
+          const SizedBox(height: 8),
+           // Section 4
+          _buildSectionTitle(isMobile, "Section 3 - Let’s Practice Advanced", "180 mins"),
+          const SizedBox(height: 8),
+          _buildLessonCard(context, screenWidth, "10", "Design for Global Audiences", "30 min", isLocked: true),
+          const SizedBox(height: 8),
+          _buildLessonCard(context, screenWidth, "11", "Dark UX and Ethical Design", "30 min", isLocked: true),
+          const SizedBox(height: 8),
+          _buildLessonCard(context, screenWidth, "12", "Dark UX and Ethical Design", "30 min", isLocked: true),
+          const SizedBox(height: 8),
+          // Section 5
+           _buildSectionTitle(isMobile, "Section 4 -Project", "180 mins"),
+          const SizedBox(height: 8),
+          _buildLessonCard(context, screenWidth, "13", "Professional Development", "30 min", isLocked: true),
+          const SizedBox(height: 8),
+          _buildLessonCard(context, screenWidth, "14", "Portfolio Building", "30 min", isLocked: true),
+          const SizedBox(height: 8),
+          
+
+
         ],
       ),
     );
   }
+
+  static Widget _buildSectionTitle(bool isMobile, String sectionTitle, String duration) {
+    return Row(
+      children: [
+        Text(
+          sectionTitle,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.nunito(
+            fontSize: isMobile ? 12 : 14,
+            fontWeight: FontWeight.w700,
+            color: const Color(0xFF8B8B8B),
+          ),
+        ),
+        const Spacer(),
+        Text(
+          duration,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.nunito(
+            fontSize: isMobile ? 10 : 12,
+            fontWeight: FontWeight.w700,
+            color: const Color(0xFF414ECA),
+          ),
+        ),
+      ],
+    );
+  }
+
+  static Widget _buildLessonCard(BuildContext context, double screenWidth, String lessonNumber, String title, String duration, {bool isLocked = false}) {
+  return GestureDetector(
+    onTap: () {
+      if (!isLocked) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => const CourseTourScreen(),
+          ),
+        );
+      }
+    },
+    child: Container(
+      height: 83, // Fixed height
+      width: screenWidth,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 2,
+          color: const Color.fromARGB(255, 220, 216, 216),
+        ),
+        borderRadius: BorderRadius.circular(19),
+        color: Colors.white, // Ensure the background is set
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: screenWidth / 30), // Use symmetric padding to reduce vertical space
+        child: Row(
+          children: [
+            Container(
+              height: 35,
+              width: 35,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 2,
+                  color: const Color.fromARGB(255, 220, 216, 216),
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                lessonNumber,
+                style: GoogleFonts.nunito(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  color: const Color(0xFF414ECA),
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded( // Use Expanded to take available space
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center, // Center align the content vertically
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: GoogleFonts.nunito(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xFF000000),
+                    ),
+                    overflow: TextOverflow.ellipsis, // Prevent overflow
+                  ),
+                  Text(
+                    duration,
+                    style: GoogleFonts.nunito(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xFF8B8B8B),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 10), // Adjust space as needed
+            isLocked
+                ? const Icon(Icons.lock, color: Color(0xFF8b8b8b))
+                : const Icon(Icons.play_circle_fill_rounded, color: Color(0xFF414ECA)),
+          ],
+        ),
+      ),
+    ),
+  );
+}
 }

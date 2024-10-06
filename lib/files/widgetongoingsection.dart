@@ -11,7 +11,7 @@ class Widgetongoingsection {
       child: Column(
         children: [
           const SizedBox(
-            height: 15,
+            height: 10,
           ),
           GestureDetector(
             onTap: (){

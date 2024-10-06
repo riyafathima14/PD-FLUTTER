@@ -5,19 +5,29 @@ import 'package:pd/files/widgetongoingsection.dart';
 import 'package:pd/screens/home_page.dart';
 import 'package:pd/screens/search_page.dart';
 
-class MyCousesPage extends StatefulWidget {
-  const MyCousesPage({super.key});
+class MyCoursesPage extends StatefulWidget {
+  const MyCoursesPage ({super.key});
 
   @override
-  State<MyCousesPage> createState() => _MyCousesPageState();
+  State<MyCoursesPage> createState() => _MyCoursesPageState();
 }
 
-class _MyCousesPageState extends State<MyCousesPage> {
+class _MyCoursesPageState extends State<MyCoursesPage> {
   int selectedSection = 0;
+
   @override
   Widget build(BuildContext context) {
-    double screewidth = MediaQuery.of(context).size.width;
-    //double screeheight = MediaQuery.of(context).size.height;
+    // Get screen width and height
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
+    // Define breakpoints for responsive design
+    bool isMobile = screenWidth < 600;
+
+    // Adjust font sizes based on screen width
+    double titleFontSize = isMobile ? 14 : 18;
+    double tabFontSize = isMobile ? 14 : 16;
+
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
@@ -29,18 +39,15 @@ class _MyCousesPageState extends State<MyCousesPage> {
               );
             },
             child: const Icon(Icons.arrow_back)),
+        title: Text(
+          'My Courses',
+          style: GoogleFonts.nunito(
+            color: const Color(0xFF260446),
+            fontSize: titleFontSize, // Responsive title font size
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         actions: [
-          const SizedBox(
-            width: 50,
-          ),
-          Text(
-            'My Courses',
-            style: GoogleFonts.nunito(
-                color: const Color(0xFF260446),
-                fontSize: 14,
-                fontWeight: FontWeight.w700),
-          ),
-          const Spacer(),
           GestureDetector(
             onTap: () {
               Navigator.of(context).pushReplacement(
@@ -49,87 +56,95 @@ class _MyCousesPageState extends State<MyCousesPage> {
                 ),
               );
             },
-            child: Image.asset('assets/images/action_key.png'),
+            child: Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: Image.asset('assets/images/action_key.png'),
+            ),
           ),
-          const SizedBox(
-            width: 10,
-          )
         ],
       ),
-      body: Padding(
-        padding: EdgeInsets.only(left: screewidth / 17, right: screewidth / 17),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 10,
+      body: SafeArea(
+        child: SingleChildScrollView( // Added to make the page scrollable
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: screenWidth / (isMobile ? 17 : 10),
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: screewidth / 17, right: screewidth / 17),
-              child: Row(
-                children: [
-                  TextButton(
-                      onPressed: () {
-                        setState(() {
-                          selectedSection = 0;
-                        });
-                      },
-                      child: Text(
-                        "Ongoing",
-                        style: GoogleFonts.nunito(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          color: selectedSection == 0
-                              ? const Color(0xFF414ECA)
-                              : const Color(0xFF8B8B8B),
-                        ),
-                      )),
-                  SizedBox(
-                    width: screewidth / 3,
-                  ),
-                  TextButton(
-                      onPressed: () {
-                        setState(() {
-                          selectedSection = 1;
-                        });
-                      },
-                      child: Text(
-                        "Completed",
-                        style: GoogleFonts.nunito(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          color: selectedSection == 1
-                              ? const Color(0xFF414ECA)
-                              : const Color(0xFF8B8B8B),
-                        ),
-                      )),
-                ],
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            child: Column(
               children: [
-                Container(
-                  height: selectedSection == 0 ? 3 : 2,
-                  width: screewidth / 2.27,
-                  color: selectedSection == 0
-                      ? const Color(0xFF414ECA)
-                      : const Color(0xFF8B8B8B),
+                const SizedBox(height: 10),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: screenWidth / (isMobile ? 17 : 10),
+                  ),
+                  child: Row(
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          setState(() {
+                            selectedSection = 0;
+                          });
+                        },
+                        child: Text(
+                          "Ongoing",
+                          style: GoogleFonts.nunito(
+                            fontSize: tabFontSize, // Responsive tab font size
+                            fontWeight: FontWeight.w700,
+                            color: selectedSection == 0
+                                ? const Color(0xFF414ECA)
+                                : const Color(0xFF8B8B8B),
+                          ),
+                        ),
+                      ),
+                      const Spacer(),
+                      TextButton(
+                        onPressed: () {
+                          setState(() {
+                            selectedSection = 1;
+                          });
+                        },
+                        child: Text(
+                          "Completed",
+                          style: GoogleFonts.nunito(
+                            fontSize: tabFontSize, // Responsive tab font size
+                            fontWeight: FontWeight.w700,
+                            color: selectedSection == 1
+                                ? const Color(0xFF414ECA)
+                                : const Color(0xFF8B8B8B),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                Container(
-                  height: selectedSection == 1 ? 3 : 2,
-                  width: screewidth / 2.27,
-                  color: selectedSection == 1
-                      ? const Color(0xFF414ECA)
-                      : const Color(0xFF8B8B8B),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      height: selectedSection == 0 ? 3 : 2,
+                      width: (screenWidth - (screenWidth / (isMobile ? 17 : 10) * 2)) / 2,
+                      color: selectedSection == 0
+                          ? const Color(0xFF414ECA)
+                          : const Color(0xFF8B8B8B),
+                    ),
+                    Container(
+                      height: selectedSection == 1 ? 3 : 2,
+                      width: (screenWidth - (screenWidth / (isMobile ? 17 : 10) * 2)) / 2,
+                      color: selectedSection == 1
+                          ? const Color(0xFF414ECA)
+                          : const Color(0xFF8B8B8B),
+                    ),
+                  ],
                 ),
+                const SizedBox(height: 10),
+
+                // Adjusting sections
+                if (selectedSection == 0)
+                  Widgetongoingsection.ongoingSection(screenWidth, context),
+                if (selectedSection == 1)
+                  WidgetCompletedSection.completedSection(screenWidth, context),
               ],
             ),
-            if (selectedSection == 0)
-              Widgetongoingsection.ongoingSection(screewidth,context),
-            if (selectedSection == 1)
-              WidgetCompletedSection.completedSection(screewidth,context),
-          ],
+          ),
         ),
       ),
     );

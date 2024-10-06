@@ -20,7 +20,7 @@ class _UiUxScreen2State extends State<UiUxScreen2> {
             onTap: () {
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                  builder: (context) => const MyCousesPage(),
+                  builder: (context) => const MyCoursesPage(),
                 ),
               );
             },
@@ -41,7 +41,7 @@ class _UiUxScreen2State extends State<UiUxScreen2> {
       ),
       body: SingleChildScrollView(
         child: Column(children: [
-          Widgetlessons.buildLessonsSection(screewidth,context),
+          WidgetLessons.buildLessonsSection(screewidth,context),
         ],),
       ),
    );

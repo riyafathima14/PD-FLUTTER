@@ -22,7 +22,7 @@ class _DesignScreenState extends State<DesignScreen> {
             onTap: () {
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                  builder: (context) => const MyCousesPage(),
+                  builder: (context) => const MyCoursesPage(),
                 ),
               );
             },
