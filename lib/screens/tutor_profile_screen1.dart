@@ -16,7 +16,7 @@ class _TutorProfileScreen1State extends State<TutorProfileScreen1> {
   @override
   Widget build(BuildContext context) {
     double screewidth = MediaQuery.of(context).size.width;
-    double sectionWidth = screewidth / 3;
+    //double sectionWidth = screewidth / 3;
     bool isDesktop = screewidth > 600;
     return Scaffold(
       appBar: AppBar(
@@ -397,7 +397,7 @@ class _TutorProfileScreen1State extends State<TutorProfileScreen1> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          padding:const  EdgeInsets.symmetric(horizontal: 5),
                           child: Center(
                             child: Text(
                               'Graphics & 3D Animation',
