@@ -28,14 +28,14 @@ class _CoursedetailsScreen1State extends State<CoursedetailsScreen1> {
 
   @override
   Widget build(BuildContext context) {
-    // Get screen width and height
+   
     double screenWidth = MediaQuery.of(context).size.width;
-    //double screenHeight = MediaQuery.of(context).size.height;
+   
 
-    // Determine if it's mobile or desktop based on screen width
+
     bool isMobile = screenWidth < 600;
 
-    // Responsive padding and font sizes
+   
     double horizontalPadding = screenWidth / 17;
     double titleFontSize = isMobile ? 20 : 28;
     double subTitleFontSize = isMobile ? 14 : 18;
@@ -45,7 +45,7 @@ class _CoursedetailsScreen1State extends State<CoursedetailsScreen1> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Responsive Image Section
+        
             Stack(
               children: [
                 SizedBox(
@@ -59,10 +59,21 @@ class _CoursedetailsScreen1State extends State<CoursedetailsScreen1> {
                   child: CircleAvatar(
                     child: IconButton(
                       onPressed: () {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                              builder: (context) => const HomePage()),
-                        );
+                        Navigator.push(
+            context,
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) =>
+                  const HomePage(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                var begin = 0.0;
+                var end = 1.0;
+                var tween = Tween(begin: begin, end: end);
+                var fadeAnimation = animation.drive(tween);
+                return FadeTransition(opacity: fadeAnimation, child: child);
+              },
+            ),
+          );
                       },
                       icon: const Icon(Icons.arrow_back),
                     ),
@@ -82,7 +93,7 @@ class _CoursedetailsScreen1State extends State<CoursedetailsScreen1> {
                     course.title,
                     style: GoogleFonts.nunito(
                       color: const Color(0xFF414ECA),
-                      fontSize: titleFontSize, // Responsive font size
+                      fontSize: titleFontSize,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -171,15 +182,13 @@ class _CoursedetailsScreen1State extends State<CoursedetailsScreen1> {
                   horizontal: horizontalPadding, vertical: 10),
               child: LayoutBuilder(
                 builder: (context, constraints) {
-                  double screenWidth = constraints.maxWidth;
-                  double itemSpacing =
-                      screenWidth > 800 ? 0 : 10; // Adjust if needed
+                 
 
                   return Row(
                     mainAxisAlignment:
-                        MainAxisAlignment.spaceBetween, // Ensures even spacing
+                        MainAxisAlignment.spaceBetween,
                     crossAxisAlignment:
-                        CrossAxisAlignment.center, // Align vertically centered
+                        CrossAxisAlignment.center, 
                     children: [
                       // Left-aligned "Aspirants"
                       Row(
@@ -223,7 +232,7 @@ class _CoursedetailsScreen1State extends State<CoursedetailsScreen1> {
                         ],
                       ),
 
-                      // Right-aligned "Certified"
+                      
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -253,7 +262,7 @@ class _CoursedetailsScreen1State extends State<CoursedetailsScreen1> {
                 builder: (context, constraints) {
                   double screenWidth = constraints.maxWidth;
 
-                  // Each button takes up 1/3 of the screen width
+                  
                   double sectionWidth = screenWidth / 3;
 
                   return Column(
@@ -263,7 +272,7 @@ class _CoursedetailsScreen1State extends State<CoursedetailsScreen1> {
                         children: [
                           SizedBox(
                             width:
-                                sectionWidth, // Takes up 1/3 of the screen width
+                                sectionWidth, 
                             child: TextButton(
                               onPressed: () {
                                 setState(() {
@@ -333,7 +342,7 @@ class _CoursedetailsScreen1State extends State<CoursedetailsScreen1> {
                           Container(
                             height: selectedSection == 0 ? 3 : 2,
                             width:
-                                sectionWidth, // Takes up 1/3 of the screen width
+                                sectionWidth, 
                             color: selectedSection == 0
                                 ? const Color(0xFF414ECA)
                                 : const Color(0xFF8B8B8B),
@@ -341,7 +350,7 @@ class _CoursedetailsScreen1State extends State<CoursedetailsScreen1> {
                           Container(
                             height: selectedSection == 1 ? 3 : 2,
                             width:
-                                sectionWidth, // Takes up 1/3 of the screen width
+                                sectionWidth, 
                             color: selectedSection == 1
                                 ? const Color(0xFF414ECA)
                                 : const Color(0xFF8B8B8B),
@@ -349,7 +358,7 @@ class _CoursedetailsScreen1State extends State<CoursedetailsScreen1> {
                           Container(
                             height: selectedSection == 2 ? 3 : 2,
                             width:
-                                sectionWidth, // Takes up 1/3 of the screen width
+                                sectionWidth, 
                             color: selectedSection == 2
                                 ? const Color(0xFF414ECA)
                                 : const Color(0xFF8B8B8B),
@@ -376,10 +385,21 @@ class _CoursedetailsScreen1State extends State<CoursedetailsScreen1> {
             // Enroll Button
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                      builder: (context) => const EnrollScreen10()),
-                );
+                Navigator.push(
+            context,
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) =>
+                  const EnrollScreen10(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                var begin = 0.0;
+                var end = 1.0;
+                var tween = Tween(begin: begin, end: end);
+                var fadeAnimation = animation.drive(tween);
+                return FadeTransition(opacity: fadeAnimation, child: child);
+              },
+            ),
+          );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF414ECA),

@@ -19,6 +19,7 @@ class _MostPopularcourseScreenState extends State<MostPopularcourseScreen> {
   List<Course> filteredCourses = allCourses;
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     
     List<String> courseNames = [
       'All',
@@ -47,11 +48,21 @@ class _MostPopularcourseScreenState extends State<MostPopularcourseScreen> {
       appBar: AppBar(
         leading: GestureDetector(
             onTap: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const HomePage(),
-                ),
-              );
+              Navigator.push(
+            context,
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) =>
+                  const HomePage(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                var begin = 0.0;
+                var end = 1.0;
+                var tween = Tween(begin: begin, end: end);
+                var fadeAnimation = animation.drive(tween);
+                return FadeTransition(opacity: fadeAnimation, child: child);
+              },
+            ),
+          );
             },
             child: const Icon(Icons.arrow_back)),
         actions: [
@@ -68,11 +79,21 @@ class _MostPopularcourseScreenState extends State<MostPopularcourseScreen> {
           const Spacer(),
           GestureDetector(
             onTap: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const SearchPage(),
-                ),
-              );
+              Navigator.push(
+            context,
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) =>
+                  const SearchPage(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                var begin = 0.0;
+                var end = 1.0;
+                var tween = Tween(begin: begin, end: end);
+                var fadeAnimation = animation.drive(tween);
+                return FadeTransition(opacity: fadeAnimation, child: child);
+              },
+            ),
+          );
             },
             child: Image.asset('assets/images/action_key.png'),
           ),
@@ -105,11 +126,16 @@ class _MostPopularcourseScreenState extends State<MostPopularcourseScreen> {
                                 filterCourses(index);
                               });
                             },
-                            child: Widgetcoursecontainer.listCourseContainer(
-                                courseNames[index],
-                                selectedCourseIndex!,
-                                index,
-                                context),
+                            child: SizedBox(
+                               width: isDesktop
+                                    ? screenWidth * 0.20
+                                    : screenWidth * 0.38,
+                              child: Widgetcoursecontainer.listCourseContainer(
+                                  courseNames[index],
+                                  selectedCourseIndex!,
+                                  index,
+                                  context),
+                            ),
                           ),
                         );
                       },
@@ -128,8 +154,10 @@ class _MostPopularcourseScreenState extends State<MostPopularcourseScreen> {
                           children: [
                             GestureDetector(
                               onTap: () {},
-                              child: Widgetcoursecontainer.courseContainer(
-                                  course, selectedCourseIndex!, index, context),
+                              child: 
+                                 Widgetcoursecontainer.courseContainer(
+                                    course, selectedCourseIndex!, index, context),
+                              
                             ),
                             const SizedBox(height: 10),
                           ],

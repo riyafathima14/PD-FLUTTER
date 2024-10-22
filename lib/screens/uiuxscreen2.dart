@@ -18,11 +18,21 @@ class _UiUxScreen2State extends State<UiUxScreen2> {
     appBar: AppBar(
         leading: GestureDetector(
             onTap: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const MyCoursesPage(),
-                ),
-              );
+              Navigator.push(
+            context,
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) =>
+                  const MyCoursesPage(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                var begin = 0.0;
+                var end = 1.0;
+                var tween = Tween(begin: begin, end: end);
+                var fadeAnimation = animation.drive(tween);
+                return FadeTransition(opacity: fadeAnimation, child: child);
+              },
+            ),
+          );
             },
             child: const Icon(Icons.arrow_back)),
         actions: [

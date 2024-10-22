@@ -19,6 +19,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     List<String> courseNames = [
       'All',
       'Data Science',
@@ -104,11 +105,16 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
                                 filterCourses(index);
                               });
                             },
-                            child: Widgetcoursecontainer.listCourseContainer(
-                                courseNames[index],
-                                selectedCourseIndex!,
-                                index,
-                                context),
+                            child: SizedBox(
+                               width: isDesktop
+                                    ? screenWidth * 0.20
+                                    : screenWidth * 0.38,
+                              child: Widgetcoursecontainer.listCourseContainer(
+                                  courseNames[index],
+                                  selectedCourseIndex!,
+                                  index,
+                                  context),
+                            ),
                           ),
                         );
                       },

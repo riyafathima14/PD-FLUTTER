@@ -17,7 +17,7 @@ class _ToplearnersScreenState extends State<ToplearnersScreen> {
   int? selectedCourseIndex = 0;
   @override
   Widget build(BuildContext context) {
-    
+    final screenWidth = MediaQuery.of(context).size.width;
     List<String> courseNames = [
       'All',
       'Data Science',
@@ -44,11 +44,21 @@ class _ToplearnersScreenState extends State<ToplearnersScreen> {
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const HomePage(),
-                ),
-              );
+              Navigator.push(
+            context,
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) =>
+                  const HomePage(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                var begin = 0.0;
+                var end = 1.0;
+                var tween = Tween(begin: begin, end: end);
+                var fadeAnimation = animation.drive(tween);
+                return FadeTransition(opacity: fadeAnimation, child: child);
+              },
+            ),
+          );
             },
             icon: const Icon(Icons.arrow_back)),
         actions: [
@@ -98,10 +108,15 @@ class _ToplearnersScreenState extends State<ToplearnersScreen> {
                             filterLearners(index);
                           });
                         },
-                        child: Widgetcoursecontainer.listCourseContainer(
-                                  courseNames[index],
-                                  selectedCourseIndex!,
-                                  index,context),
+                        child: SizedBox(
+                          width:  isDesktop
+                                    ? screenWidth * 0.20
+                                    : screenWidth * 0.38,
+                          child: Widgetcoursecontainer.listCourseContainer(
+                                    courseNames[index],
+                                    selectedCourseIndex!,
+                                    index,context),
+                        ),
                       ),
                     );
                   },

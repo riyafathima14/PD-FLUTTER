@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
       'Development',
       'Graphics',
       'Marketing',
-      'Buisness'
+      'Business'
     ];
 
     void filterCourses(int? index) {
@@ -70,9 +70,20 @@ class _HomePageState extends State<HomePage> {
         actions: [
           GestureDetector(
               onTap: () {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => const BookmarksScreen(),
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        const BookmarksScreen(),
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) {
+                      var begin = 0.0;
+                      var end = 1.0;
+                      var tween = Tween(begin: begin, end: end);
+                      var fadeAnimation = animation.drive(tween);
+                      return FadeTransition(
+                          opacity: fadeAnimation, child: child);
+                    },
                   ),
                 );
               },
@@ -84,9 +95,19 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(width: 10),
           GestureDetector(
             onTap: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const LeaderboardsFlashscreen(),
+              Navigator.push(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      const LeaderboardsFlashscreen(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    var begin = 0.0;
+                    var end = 1.0;
+                    var tween = Tween(begin: begin, end: end);
+                    var fadeAnimation = animation.drive(tween);
+                    return FadeTransition(opacity: fadeAnimation, child: child);
+                  },
                 ),
               );
             },
@@ -99,9 +120,19 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(width: 10),
           GestureDetector(
             onTap: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const MyCoursesPage(),
+              Navigator.push(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      const MyCoursesPage(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    var begin = 0.0;
+                    var end = 1.0;
+                    var tween = Tween(begin: begin, end: end);
+                    var fadeAnimation = animation.drive(tween);
+                    return FadeTransition(opacity: fadeAnimation, child: child);
+                  },
                 ),
               );
             },
@@ -117,7 +148,7 @@ class _HomePageState extends State<HomePage> {
       body: LayoutBuilder(
         builder: (context, constraints) {
           double width = constraints.maxWidth;
-          bool isDesktop = width > 600; // Change this threshold as needed
+          bool isDesktop = width > 600;
 
           return SingleChildScrollView(
             child: Center(
@@ -126,43 +157,56 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     OutlinedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => const SearchPage(),
-                        ),
-                      );
-                    },
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      backgroundColor: const Color.fromARGB(173, 217, 217, 217),
-                      side: const BorderSide(
-                        width: 2.0,
-                        color: Color.fromARGB(255, 255, 255, 255),
-                      ),
-                      
-                      fixedSize: Size(screenWidth * 0.8, 56), // 90% of screen width
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const Icon(Icons.search),
-                        const SizedBox(width: 10),
-                        Text(
-                          'Search for a Course or Mentor',
-                          style: GoogleFonts.nunito(
-                            fontSize: isDesktop ? 16 : 14,
-                            fontWeight: FontWeight.w600,
-                            color: const Color.fromARGB(138, 0, 0, 0),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    const SearchPage(),
+                            transitionsBuilder: (context, animation,
+                                secondaryAnimation, child) {
+                              var begin = 0.0;
+                              var end = 1.0;
+                              var tween = Tween(begin: begin, end: end);
+                              var fadeAnimation = animation.drive(tween);
+                              return FadeTransition(
+                                  opacity: fadeAnimation, child: child);
+                            },
                           ),
+                        );
+                      },
+                      style: OutlinedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                        const Spacer(),
-                        Image.asset('assets/images/Vector.png'),
-                      ],
+                        backgroundColor:
+                            const Color.fromARGB(173, 217, 217, 217),
+                        side: const BorderSide(
+                          width: 2.0,
+                          color: Color.fromARGB(255, 255, 255, 255),
+                        ),
+                        fixedSize: Size(screenWidth * 0.8, 56),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const Icon(Icons.search),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Text(
+                              'Search for a Course or Mentor',
+                              style: GoogleFonts.nunito(
+                                fontSize: isDesktop ? 16 : 12,
+                                fontWeight: FontWeight.w600,
+                                color: const Color.fromARGB(138, 0, 0, 0),
+                              ),
+                            ),
+                          ),
+                          Image.asset('assets/images/Vector.png'),
+                        ],
+                      ),
                     ),
-                  ),
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Row(
@@ -170,75 +214,121 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             'Top Learners',
                             style: GoogleFonts.nunito(
-                                color: const Color(0xFF414ECA),
-                                fontSize: isDesktop ? 18 : 14,
-                                fontWeight: FontWeight.w700),
+                              color: const Color(0xFF414ECA),
+                              fontSize: isDesktop ? 18 : 14,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                           const Spacer(),
                           GestureDetector(
                             onTap: () {
-                              Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                  builder: (context) => const ToplearnersScreen(),
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                  pageBuilder: (context, animation,
+                                          secondaryAnimation) =>
+                                      const ToplearnersScreen(),
+                                  transitionsBuilder: (context, animation,
+                                      secondaryAnimation, child) {
+                                    var begin = 0.0;
+                                    var end = 1.0;
+                                    var tween = Tween(begin: begin, end: end);
+                                    var fadeAnimation = animation.drive(tween);
+                                    return FadeTransition(
+                                        opacity: fadeAnimation, child: child);
+                                  },
                                 ),
                               );
                             },
                             child: Text(
                               "See All",
                               style: GoogleFonts.nunito(
-                                  color: const Color(0xFF414ECA),
-                                  fontSize: isDesktop ? 14 : 12,
-                                  fontWeight: FontWeight.w600),
+                                color: const Color(0xFF414ECA),
+                                fontSize: isDesktop ? 14 : 12,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ),
                     SizedBox(
-                      height: isDesktop ? 100 : 90,
+                      height: isDesktop ? 100 : 100,
                       child: ListView.builder(
-                        itemCount: 7,
+                        itemCount: names.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          return Widgettoplearnersprofile.profiles(
-                              names[index], index);
+                          return Padding(
+                            padding: EdgeInsets.only(
+                              right: isDesktop ? 20.0 : 5.0,
+                            ),
+                            child: SizedBox(
+                              width: isDesktop
+                                  ? screenWidth * 0.15
+                                  : screenWidth * 0.20,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Widgettoplearnersprofile.profiles(
+                                    names[index],
+                                    index,
+                                  ),
+                                  const SizedBox(height: 5),
+                                ],
+                              ),
+                            ),
+                          );
                         },
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(12.0),
+                      padding: const EdgeInsets.only(bottom: 12.0),
                       child: Row(
                         children: [
                           Text(
                             'Most Popular Courses',
                             style: GoogleFonts.nunito(
-                                color: const Color(0xFF414ECA),
-                                fontSize: isDesktop ? 18 : 14,
-                                fontWeight: FontWeight.w700),
+                              color: const Color(0xFF414ECA),
+                              fontSize: isDesktop ? 18 : 14,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                           const Spacer(),
                           GestureDetector(
                             onTap: () {
-                              Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                  builder: (context) =>
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                  pageBuilder: (context, animation,
+                                          secondaryAnimation) =>
                                       const MostPopularcourseScreen(),
+                                  transitionsBuilder: (context, animation,
+                                      secondaryAnimation, child) {
+                                    var begin = 0.0;
+                                    var end = 1.0;
+                                    var tween = Tween(begin: begin, end: end);
+                                    var fadeAnimation = animation.drive(tween);
+                                    return FadeTransition(
+                                        opacity: fadeAnimation, child: child);
+                                  },
                                 ),
                               );
                             },
                             child: Text(
                               "See All",
                               style: GoogleFonts.nunito(
-                                  color: const Color(0xFF414ECA),
-                                  fontSize: isDesktop ? 14 : 12,
-                                  fontWeight: FontWeight.w600),
+                                color: const Color(0xFF414ECA),
+                                fontSize: isDesktop ? 14 : 12,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ),
                     SizedBox(
-                      height: isDesktop ? 60 : 50,
+                      height: isDesktop ? 70 : 50,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: courseNames.length,
@@ -252,10 +342,18 @@ class _HomePageState extends State<HomePage> {
                                   filterCourses(index);
                                 });
                               },
-                              child: Widgetcoursecontainer.listCourseContainer(
+                              child: SizedBox(
+                                width: isDesktop
+                                    ? screenWidth * 0.20
+                                    : screenWidth * 0.38,
+                                child:
+                                    Widgetcoursecontainer.listCourseContainer(
                                   courseNames[index],
                                   selectedCourseIndex!,
-                                  index,context),
+                                  index,
+                                  context,
+                                ),
+                              ),
                             ),
                           );
                         },
@@ -275,17 +373,36 @@ class _HomePageState extends State<HomePage> {
                               GestureDetector(
                                 onTap: () {
                                   if (course.category == "Designs" &&
-                                      course.title == 'UIUX Designing - Advanced') {
-                                    Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                        builder: (context) =>
+                                      course.title ==
+                                          'UIUX Designing - Advanced') {
+                                    Navigator.push(
+                                      context,
+                                      PageRouteBuilder(
+                                        pageBuilder: (context, animation,
+                                                secondaryAnimation) =>
                                             const CoursedetailsScreen1(),
+                                        transitionsBuilder: (context, animation,
+                                            secondaryAnimation, child) {
+                                          var begin = 0.0;
+                                          var end = 1.0;
+                                          var tween =
+                                              Tween(begin: begin, end: end);
+                                          var fadeAnimation =
+                                              animation.drive(tween);
+                                          return FadeTransition(
+                                              opacity: fadeAnimation,
+                                              child: child);
+                                        },
                                       ),
                                     );
                                   }
                                 },
                                 child: Widgetcoursecontainer.courseContainer(
-                                    course, selectedCourseIndex!, index,context),
+                                  course,
+                                  selectedCourseIndex!,
+                                  index,
+                                  context,
+                                ),
                               ),
                               const SizedBox(height: 10),
                             ],

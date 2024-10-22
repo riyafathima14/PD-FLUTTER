@@ -6,9 +6,9 @@ class WidgetReviews {
   static int selectedRatingIndex = 0;
 
   static Widget buildReviewsSection(double screenWidth, BuildContext context) {
-    // Adjust font sizes based on screen width
+    
     double titleFontSize =
-        screenWidth > 600 ? 14 : 12; // Larger font for wider screens
+        screenWidth > 600 ? 14 : 12; 
     double subtitleFontSize = screenWidth > 600 ? 13 : 11;
     bool isFavorite;
 
@@ -16,11 +16,11 @@ class WidgetReviews {
       padding: EdgeInsets.symmetric(horizontal: screenWidth / 20),
       child: Column(
         crossAxisAlignment:
-            CrossAxisAlignment.start, // Align children to the start
+            CrossAxisAlignment.start, 
         children: [
           Row(
             mainAxisAlignment:
-                MainAxisAlignment.spaceBetween, // Space between elements
+                MainAxisAlignment.spaceBetween, 
             children: [
               Text(
                 "4.8 (1564 reviews)",
@@ -96,7 +96,7 @@ class WidgetReviews {
             ),
           ),
           const SizedBox(height: 10),
-          // Review Item Builder
+          
           _buildReviewItem(
             screenWidth,
             'assets/images/profile2.png',
@@ -153,15 +153,14 @@ class WidgetReviews {
       bool isFavorite) {
     return Column(
       crossAxisAlignment:
-          CrossAxisAlignment.start, // Align children to the start
+          CrossAxisAlignment.start, 
       children: [
         Row(
           children: [
             Image.asset(imagePath,
-                width: 40, height: 40), // Set size of profile image
+                width: 40, height: 40), 
             const SizedBox(width: 8),
             Expanded(
-              // Allow name to take available space
               child: Text(
                 name,
                 style: GoogleFonts.nunito(
